@@ -24,7 +24,7 @@ __all__ = ['argparser', 'run_flow', 'run', 'message_if_missing']
 
 
 import argparse
-import BaseHTTPServer
+import http.server
 import logging
 import socket
 import sys
@@ -61,7 +61,7 @@ argparser.add_argument('--logging_level', default='ERROR',
                        help='Set the logging level of detail.')
 
 
-class ClientRedirectServer(BaseHTTPServer.HTTPServer):
+class ClientRedirectServer(http.server.HTTPServer):
   """A server to handle OAuth 2.0 redirects back to localhost.
 
   Waits for a single request and parses the query parameters
